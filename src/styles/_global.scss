@@ -2,6 +2,26 @@ body, input, button, select {
   font-family: Montserrat,Helvetica,Arial,sans-serif;
 }
 
+.group-button {
+  text-align: center;
+  margin: 20px 0;
+  border: 1px solid $white_color;
+  border-radius: 5px;
+
+  p {
+    font-size: 16px;
+    color: $white_color;
+  }
+
+  button {
+    width: 100px;
+    height: 40px;
+    background: $green_color;
+    color: $white_color;
+    cursor: pointer;
+  }
+}
+
 .form {
   $root: &;
   &--vertical {

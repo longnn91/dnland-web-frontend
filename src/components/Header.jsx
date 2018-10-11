@@ -8,8 +8,8 @@ export default class Header extends Component {
         <div className="header__topbar">
           <div className="header__topbar__container">
             <div className="header__topbar__logo">
-              <span>SHEN</span>
-              <span>LONG</span>
+              <span>DUMB</span>
+              <span>DATA</span>
             </div>
             <div className="header__topbar__toggle">
               <span></span>
