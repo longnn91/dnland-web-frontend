@@ -38,7 +38,7 @@ class NoteForm extends React.Component {
   }
 }
 
-module.exports = connect(function(state){
+module.exports = connect((state) => {
   return {
     isAdding: state.isAdding
   }

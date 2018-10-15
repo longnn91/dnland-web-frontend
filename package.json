@@ -9,6 +9,7 @@
     "build": "webpack-dev-server --mode production"
   },
   "dependencies": {
+    "axios": "^0.18.0",
     "babel-preset-stage-0": "^6.24.1",
     "bootstrap": "^4.0.0",
     "css-loader": "^0.28.10",

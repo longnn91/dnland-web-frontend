@@ -1,10 +1,12 @@
-const mangReducer = (state = ['SHEN', 'NGOC', 'LONG'], action) => {
+import {userData} from 'dumbData';
+
+const mangReducer = (state = userData, action) => {
   switch (action.type) {
     case 'ADD_ITEM':
-      return {...state, mang: [...state.mang, action.item] }
+      return [...state, action.item];
       break;
     case 'REMOVE_ITEM':
-      return {...state, mang: state.mang.filter((e, i) => i != action.index)}
+      return state.filter((e, i) => i != action.index);
       break;
     default:
     return state;
