@@ -1,0 +1,10 @@
+.product-page {
+  flex: 1;
+  padding: 30px;
+
+  &__main {
+    &__table {
+      width: 100%;
+    }
+  }
+}

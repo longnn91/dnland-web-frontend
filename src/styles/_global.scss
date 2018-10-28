@@ -108,3 +108,38 @@ body, input, button, select {
     border-width: 0 1px 1px 1px;
   }
 }
+
+.button {
+  padding: 10px;
+  background: $white_color;
+  color: $gray_color;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+
+  &--danger{
+    background: $orange_color;
+    color: $white_color;
+  }
+}
+
+.table {
+  border: 2px solid $white_color;
+  color: $white_color;
+
+  &__button {
+    margin: 0 10px;
+  }
+
+  & > thead {
+    background: $gray_light_color;
+    td {
+      font-weight: bold;
+    }
+  }
+
+  td {
+    padding: 10px;
+    border: 1px solid $white_color;
+  }
+}

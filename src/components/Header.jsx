@@ -26,6 +26,7 @@ export default class Header extends Component {
               </form>
             </div>
             <div className="header__topbar__link">
+              <Link to="/product">PRODUCTS</Link>
               <Link to="/">SIGN UP</Link>
               <Link to="/login">SIGN IN</Link>
             </div>
