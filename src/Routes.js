@@ -1,5 +1,7 @@
 import React from 'react';
-import { HomePage, LoginPage, ProductPage, NotFoundPage  } from 'pages';
+import { HomePage, LoginPage, NotFoundPage } from 'pages';
+import ProductPage from 'pages/ProductPage';
+import { Temps } from 'components';
 
 const routes = [
   {
@@ -10,6 +12,11 @@ const routes = [
     }
   },
   {
+    path: '/temps',
+    exact: false,
+    main: Temps
+  },
+  {
     path: '/login',
     exact: false,
     main: () => <LoginPage />
@@ -17,7 +24,7 @@ const routes = [
   {
     path: '/product',
     exact: false,
-    main: () => <ProductPage />
+    main: ProductPage
   },
   {
     path: '',

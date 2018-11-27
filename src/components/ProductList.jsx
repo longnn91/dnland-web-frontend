@@ -3,14 +3,18 @@ import { connect } from 'react-redux';
 import callAPI from '../apiCaller';
 
 class ProductItem extends Component {
+  handleClick() {
+    this.content.history.push('/login');
+  }
+
   render() {
     return (
       <tr>
         <td>{this.props.index}</td>
         <td>{this.props.code}</td>
         <td>{this.props.name}</td>
-        <td>{this.props.price}</td>
-        <td>{this.props.status ? 'Available' : 'Not Available'}</td>
+        <td>{this.props.username}</td>
+        <td>{this.props.email}</td>
         <td>
           <button className="button table__button">EDIT</button>
           <button className="button button--danger table__button">DELETE</button>
@@ -29,15 +33,16 @@ class ProductList extends Component {
   }
 
   componentDidMount() {
-    callAPI('product', 'GET').then(res => {
-      this.setState({
-        product: res.data
-      });
+    callAPI('users/list', 'GET').then(res => {
+      console.log(res);
+      this.state.product = [...res.data.userList];
+      this.setState(this.state);
     })
   }
 
   render() {
     var { product } = this.state;
+    console.log('asdasd', this.state);
     return(
       <table className="product-page__main__table table">
         <thead>
@@ -45,8 +50,8 @@ class ProductList extends Component {
             <td>No.</td>
             <td>Code</td>
             <td>Name</td>
-            <td>Price</td>
-            <td>Status</td>
+            <td>Username</td>
+            <td>Email</td>
             <td>Action</td>
           </tr>
         </thead>
@@ -54,7 +59,7 @@ class ProductList extends Component {
           {
             product.map((item, index) => {
               return (
-                <ProductItem index={index} code={item.code} name={item.name} price={item.price} staus={item.status} />
+                <ProductItem key={index} index={index} code={item._id} name={item.name} username={item.username} email={item.email}/>
               )
             })
           }

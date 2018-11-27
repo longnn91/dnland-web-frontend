@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { ProductList } from 'components';
+import ProductList from 'components/ProductList';
 
 export default class ProductPage extends Component {
 
@@ -10,7 +10,7 @@ export default class ProductPage extends Component {
             <button>ADD ITEM</button>
         </div>
         <div className="product-page__main">
-          <ProductList />
+          <ProductList {...this.props} />
         </div>
       </div>
     );

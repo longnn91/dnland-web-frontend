@@ -4,7 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start": "killall -9 node && webpack-dev-server --mode production",
+    "start": "webpack-dev-server --mode production",
     "dev": "webpack-dev-server --mode development",
     "build": "webpack-dev-server --mode production"
   },
@@ -22,6 +22,7 @@
     "react-redux": "^5.0.7",
     "react-router-dom": "^4.2.2",
     "redux": "^3.7.2",
+    "redux-thunk": "^2.3.0",
     "sass-loader": "^6.0.7",
     "style-loader": "^0.20.3",
     "url-loader": "^1.0.1",
