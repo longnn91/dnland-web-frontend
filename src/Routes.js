@@ -19,7 +19,7 @@ const routes = [
   {
     path: '/login',
     exact: false,
-    main: () => <LoginPage />
+    main: ({ history }) => <LoginPage history={history}/>
   },
   {
     path: '/product',
@@ -29,7 +29,7 @@ const routes = [
   {
     path: '',
     exact: false,
-    main: () => <NotFoundPage />
+    main: ({ history }) => <NotFoundPage history={history} />
   }
 ];
 

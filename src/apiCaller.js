@@ -38,7 +38,7 @@ const callAPI = (url, method, data) => {
   return axios({
     url: url,
     method: method,
-    data: null
+    data: data
   }).catch(err => {
     console.log(err);
   })
