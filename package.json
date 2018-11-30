@@ -4,11 +4,12 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start": "killall -9 node && webpack-dev-server --mode production",
+    "start": "webpack-dev-server --mode production",
     "dev": "webpack-dev-server --mode development",
     "build": "webpack-dev-server --mode production"
   },
   "dependencies": {
+    "axios": "^0.18.0",
     "babel-preset-stage-0": "^6.24.1",
     "bootstrap": "^4.0.0",
     "css-loader": "^0.28.10",
@@ -17,10 +18,12 @@
     "node-sass": "^4.7.2",
     "path": "^0.12.7",
     "react": "^16.2.0",
+    "react-cookie": "2.2",
     "react-dom": "^16.2.0",
     "react-redux": "^5.0.7",
     "react-router-dom": "^4.2.2",
     "redux": "^3.7.2",
+    "redux-thunk": "^2.3.0",
     "sass-loader": "^6.0.7",
     "style-loader": "^0.20.3",
     "url-loader": "^1.0.1",

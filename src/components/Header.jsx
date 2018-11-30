@@ -1,7 +1,44 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Route } from 'react-router-dom';
+
+const menu = [
+  {
+    name: 'SIGN UP1',
+    to: '/',
+    exact: true
+  },
+  {
+    name: 'PRODUCTS1',
+    to: '/product',
+    exact: false
+  },
+  {
+    name: 'LOGIN1',
+    to: '/login',
+    exact: false
+  }
+];
+
+const MenuLink = ({label, to, exact}) => {
+  return (
+    <Route
+      path={to}
+      exact={exact}
+      children={({match}) => {
+        var active = match ? 'active' : 'none-active';
+        console.log('sssss');
+        return (
+          <div className={acvite}>
+            <Link to={to}>{label}</Link>
+          </div>
+        )
+      }}
+    />
+  )
+}
 
 export default class Header extends Component {
+
   render(){
     return (
       <header className="header">
@@ -26,8 +63,9 @@ export default class Header extends Component {
               </form>
             </div>
             <div className="header__topbar__link">
+              <Link to="/product">PRODUCTS</Link>
               <Link to="/">SIGN UP</Link>
-              <Link to="/login">SIGN IN</Link>
+              <Link to="/login">LOGIN</Link>
             </div>
           </div>
         </div>
@@ -65,5 +103,24 @@ export default class Header extends Component {
         </div>
       </header>
     )
+  }
+
+  showMenu = (menu) => {
+
+    console.log(menu);
+    var result = null;
+    if (menu.length > 0) {
+      console.log('zzzz');
+      result = menu.map((menu, index) => {
+        return(
+          <MenuLink
+            key={index}
+            label={menu.name}
+            to={menu.to}
+            exact={menu.exact}
+           />
+       );
+      });
+    }
   }
 }

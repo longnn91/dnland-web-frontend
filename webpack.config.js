@@ -20,7 +20,10 @@ module.exports = {
       assets: path.resolve(__dirname, './assets'),
       images: path.resolve(__dirname, './assets/images'),
       components: path.resolve(__dirname, './src/components'),
-      dumbData: path.resolve(__dirname, './src/dumbData')
+      dumbData: path.resolve(__dirname, './src/dumbData'),
+      pages: path.resolve(__dirname, './src/pages'),
+      actions: path.resolve(__dirname, './src/actions'), 
+      constants: path.resolve(__dirname, './src/constants')
     }
   },
   module: {
@@ -55,6 +58,6 @@ module.exports = {
     contentBase: '/dist',
     historyApiFallback: true,
     host: 'demo-react.com',
-    port: 3000
+    port: 3001
   }
 }
