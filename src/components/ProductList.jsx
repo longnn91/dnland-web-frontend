@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
+import { getProductList } from 'actions/productAction';
 import callAPI from '../apiCaller';
 
 class ProductItem extends Component {
@@ -27,22 +28,21 @@ class ProductItem extends Component {
 class ProductList extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      product: []
-    }
+    // this.state = {
+    //   product: []
+    // }
   }
 
   componentDidMount() {
-    callAPI('users/list', 'GET').then(res => {
-      console.log(res);
-      this.state.product = [...res.data.userList];
-      this.setState(this.state);
-    })
+    // callAPI('users/list', 'GET').then(res => {
+    //   this.state.product = [...res.data.userList];
+    //   this.setState(this.state);
+    // })
+    this.props.getProductList();
   }
 
   render() {
-    var { product } = this.state;
-    console.log('asdasd', this.state);
+    var { product } = this.props;
     return(
       <table className="product-page__main__table table">
         <thead>
@@ -75,4 +75,12 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, null)(ProductList);
+const mapDispatchToProps = (dispatch, props) => {
+  return {
+    getProductList: () => {
+      dispatch(getProductList());
+    }
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ProductList);

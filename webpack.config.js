@@ -21,7 +21,9 @@ module.exports = {
       images: path.resolve(__dirname, './assets/images'),
       components: path.resolve(__dirname, './src/components'),
       dumbData: path.resolve(__dirname, './src/dumbData'),
-      pages: path.resolve(__dirname, './src/pages')
+      pages: path.resolve(__dirname, './src/pages'),
+      actions: path.resolve(__dirname, './src/actions'), 
+      constants: path.resolve(__dirname, './src/constants')
     }
   },
   module: {

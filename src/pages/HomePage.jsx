@@ -4,7 +4,7 @@ import { List } from 'components'
 export default class HomePage extends Component {
   render(){
     return (
-      <List />
+      <h1>HOME PAGE</h1>
     )
   }
 }

@@ -1,26 +1,9 @@
-var inititalState = [
-  {
-    code: 'C01',
-    name: 'ITEM 01',
-    price: 300,
-    status: true
-  },
-  {
-    code: 'C02',
-    name: 'ITEM 02',
-    price: 600,
-    status: false
-  },
-  {
-    code: 'C03',
-    name: 'ITEM 03',
-    price: 900,
-    status: true
-  }
-];
+import { productType } from 'constants/actionTypes';
 
-const productReducer = (state = inititalState, action) => {
+const productReducer = (state = [], action) => {
   switch (action.type) {
+    case productType.GET_PRODUCTS_LIST:
+      return [...action.productList]
     default:
     return [...state];
   }

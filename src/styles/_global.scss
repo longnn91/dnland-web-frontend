@@ -69,6 +69,14 @@ body, input, button, select {
     }
   }
 
+  &__error {
+    margin: 15px;
+    font-size: 12px;
+    color: #de2424;
+    font-weight: 600;
+    height: 18px;
+  }
+
   &__button {
     min-height: 50px;
     min-width: 60px;

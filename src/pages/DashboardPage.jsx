@@ -1,10 +1,11 @@
 import React, {Component} from 'react';
-import { Route,Switch } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 import {Header, Footer} from 'components';
 import HomePage from './HomePage';
 import LoginPage from './LoginPage';
 import ProductPage from './ProductPage';
 import routes from '../Routes';
+import { isAuth } from 'actions/authAction';
 
 class Temps1 extends Component {
   render(){
@@ -17,6 +18,7 @@ class Temps1 extends Component {
 
 export default class DashboardPage extends Component {
   render() {
+    console.log(isAuth());
     return (
       <div className="wrapper">
           <Header/>
@@ -35,7 +37,8 @@ export default class DashboardPage extends Component {
                         key={index}
                         path={route.path}
                         exact={route.exact}
-                        component={route.main} />
+                        component={ !isAuth() && route.auth ? (props) => <Redirect to={{pathname: "/login"}} /> : route.main }
+                     />
                     )
                   })
                 }
