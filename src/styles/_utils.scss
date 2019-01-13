@@ -1,0 +1,33 @@
+@for $i from 1 through 12 {
+  .mgt-#{$i*5} {
+    margin-top: ($i * 5) + 0px !important;
+  }
+  .mgb-#{$i*5} {
+    margin-bottom: ($i * 5) + 0px !important;
+  }
+  .mgl-#{$i*5} {
+    margin-left: ($i * 5) + 0px !important;
+  }
+  .mgr-#{$i*5} {
+    margin-right: ($i * 5) + 0px !important;
+  }
+}
+
+@for $i from 8 through 40 {
+  .fz-#{$i} {
+    font-size: $i + 0px !important;
+  }
+}
+
+.text-center {
+  text-align: center !important;
+}
+
+.text-bold {
+  font-weight: bold !important;
+}
+
+.align-center {
+  margin: 0 auto;
+  display: block;
+}
