@@ -1,23 +1,9 @@
 import React, { Component } from 'react';
 import { Link, Route } from 'react-router-dom';
-
-const menu = [
-  {
-    name: 'SIGN UP1',
-    to: '/',
-    exact: true
-  },
-  {
-    name: 'PRODUCTS1',
-    to: '/product',
-    exact: false
-  },
-  {
-    name: 'LOGIN1',
-    to: '/login',
-    exact: false
-  }
-];
+import Modal from 'react-modal';
+import { headerMenu } from 'constants/data';
+import LogoutModal from 'modals/Logout.modal';
+import { isAuth } from 'actions/authAction';
 
 const MenuLink = ({label, to, exact}) => {
   return (
@@ -26,11 +12,8 @@ const MenuLink = ({label, to, exact}) => {
       exact={exact}
       children={({match}) => {
         var active = match ? 'active' : 'none-active';
-        console.log('sssss');
         return (
-          <div className={acvite}>
-            <Link to={to}>{label}</Link>
-          </div>
+          <Link className={active} to={to}>{label}</Link>
         )
       }}
     />
@@ -38,8 +21,50 @@ const MenuLink = ({label, to, exact}) => {
 }
 
 export default class Header extends Component {
+  constructor(props) {
+    super(props);
+    this.openModal = this.openModal.bind(this);
+    this.menu = headerMenu;
+    this.state = {
+      openModal: false
+    };
+  }
 
-  render(){
+  openModal() {
+  this.setState({openModal: !this.state.openModal});
+  }
+
+  showMenu = (menu) => {
+    var result = null;
+    if (menu.length > 0) {
+      result = menu.map((menu, index) => {
+        let redirectComponent = null;
+        if (isAuth()) {
+          redirectComponent = menu.auth ?
+          <MenuLink
+            key={index}
+            label={menu.name}
+            to={menu.to}
+            exact={menu.exact}
+           /> : null;
+        } else {
+          redirectComponent = menu.auth ? null :
+          <MenuLink
+            key={index}
+            label={menu.name}
+            to={menu.to}
+            exact={menu.exact}
+           />
+        }
+        return(
+          redirectComponent
+       );
+      });
+    }
+    return result;
+  }
+
+  render() {
     return (
       <header className="header">
         <div className="header__topbar">
@@ -63,9 +88,9 @@ export default class Header extends Component {
               </form>
             </div>
             <div className="header__topbar__link">
-              <Link to="/product">PRODUCTS</Link>
-              <Link to="/">SIGN UP</Link>
-              <Link to="/login">LOGIN</Link>
+              {this.showMenu(this.menu)}
+              { isAuth() && <button className="button button--small button--danger" onClick={this.openModal}>LOG OUT</button>}
+              <LogoutModal openModal={this.openModal} isOpenModal={this.state.openModal}></LogoutModal>
             </div>
           </div>
         </div>
@@ -103,24 +128,5 @@ export default class Header extends Component {
         </div>
       </header>
     )
-  }
-
-  showMenu = (menu) => {
-
-    console.log(menu);
-    var result = null;
-    if (menu.length > 0) {
-      console.log('zzzz');
-      result = menu.map((menu, index) => {
-        return(
-          <MenuLink
-            key={index}
-            label={menu.name}
-            to={menu.to}
-            exact={menu.exact}
-           />
-       );
-      });
-    }
   }
 }

@@ -22,8 +22,9 @@ module.exports = {
       components: path.resolve(__dirname, './src/components'),
       dumbData: path.resolve(__dirname, './src/dumbData'),
       pages: path.resolve(__dirname, './src/pages'),
-      actions: path.resolve(__dirname, './src/actions'), 
-      constants: path.resolve(__dirname, './src/constants')
+      actions: path.resolve(__dirname, './src/actions'),
+      constants: path.resolve(__dirname, './src/constants'),
+      modals: path.resolve(__dirname, './src/modals')
     }
   },
   module: {

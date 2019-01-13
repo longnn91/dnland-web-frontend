@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import { getProductList } from 'actions/productAction';
-import callAPI from '../apiCaller';
+// import callAPI from '../apiCaller';
 
 class ProductItem extends Component {
   handleClick() {
@@ -18,7 +18,7 @@ class ProductItem extends Component {
         <td>{this.props.email}</td>
         <td>
           <button className="button table__button">EDIT</button>
-          <button className="button button--danger table__button">DELETE</button>
+          <button className="button button--orange table__button">DELETE</button>
         </td>
       </tr>
     )

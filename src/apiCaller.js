@@ -2,7 +2,6 @@ import axios from 'axios';
 import { getToken } from 'actions/authAction';
 
 const API_URL = 'http://localhost:3000';
-const TOKEN = getToken();
 const REQUEST_HEADER = {
   'Content-Type': 'application/json',
   'Accept': 'application/json'
@@ -10,7 +9,7 @@ const REQUEST_HEADER = {
 axios.defaults.baseURL = API_URL;
 
 axios.interceptors.request.use(function (config) {
-  config.headers.Authorization = TOKEN;
+  config.headers.Authorization = getToken();
   Object.assign(config.headers, REQUEST_HEADER);
     return config;
   }, function (error) {

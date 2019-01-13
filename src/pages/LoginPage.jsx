@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import callAPI from '../apiCaller';
 import { login } from 'actions/authAction';
+import FacebookLogin from 'react-facebook-login';
+import GoogleLogin from 'react-google-login';
 
 export default class HomePage extends Component {
   constructor(props) {
@@ -24,7 +25,7 @@ export default class HomePage extends Component {
     e.preventDefault();
       const { username, password } = this.state;
       if (username && password) {
-        login({username, password}, this.props.history).catch(err => {
+        login({username, password, type: 'origin'}, this.props.history).catch(err => {
           if (err.response && err.response.status === 403) {
               this.setState({ error: err.response.data.msg });
           }
@@ -32,7 +33,42 @@ export default class HomePage extends Component {
       }
   }
 
-  render(){
+  responseFacebook = response => {
+    let loginParams = {
+      type: 'facebook',
+      name: response.name,
+      username: response.userID,
+      email: response.email,
+      token: response.accessToken,
+    }
+    login(loginParams, this.props.history).catch(err => {
+      if (err.response && err.response.status === 403) {
+          this.setState({ error: err.response.data.msg });
+      }
+    });
+  };
+
+  responseGoogle = response => {
+    console.log(response);
+    if (response && response.profileObj) {
+      let loginParams = {
+        type: 'google',
+        name: response.profileObj.name,
+        username: response.profileObj.googleId,
+        email: response.profileObj.email,
+        token: response.accessToken,
+      }
+      login(loginParams, this.props.history).catch(err => {
+        if (err.response && err.response.status === 403) {
+            this.setState({ error: err.response.data.msg });
+        }
+      });
+    } else {
+      console.log('Login get error!');
+    }
+  };
+
+  render() {
     const { username, password, error } = this.state;
     return (
       <div className="main main--center">
@@ -42,12 +78,26 @@ export default class HomePage extends Component {
                 <span className="form__header__title">Login form</span>
                 <span className="form__header__close-button"></span>
               </div>
-              <input type="text" className="form__input" placeholder="Email..." name="username" value={username} onChange={this.handleChange} />
-              <input type="password" className="form__input" placeholder="Password..." name="password" value={password} onChange={this.handleChange} />
-              <label className="form__error">{error}</label>
-              <input type="submit" className="form__button" />
+              <div className="form__main">
+                <input type="text" className="form__input mgb-20" placeholder="Email..." name="username" value={username} onChange={this.handleChange} />
+                <input type="password" className="form__input" placeholder="Password..." name="password" value={password} onChange={this.handleChange} />
+                <label className="form__error">{error}</label>
+                <input type="submit" className="form__button" />
+              </div>
             </form>
           </section>
+          <FacebookLogin
+            appId="322579365133877"
+            autoLoad={false}
+            fields="name,email,picture"
+            callback={this.responseFacebook}
+          />
+          <GoogleLogin
+            clientId="1001066386274-2h71fhggr4p7jg0gfnm23f8s1u5ebqop.apps.googleusercontent.com"
+            buttonText="Google Login"
+            onSuccess={this.responseGoogle}
+            onFailure={this.responseGoogle}
+          />
       </div>
     )
   }

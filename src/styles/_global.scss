@@ -30,7 +30,6 @@ body, input, button, select {
   }
 
   &__login {
-    display: flex;
     background: $white_color;
     border-radius: 8px;
     overflow: hidden;
@@ -39,7 +38,7 @@ body, input, button, select {
 
     #{$root}__input {
       border: 1px solid $gray_light_color;
-      margin: 15px;
+      margin: 5px 0;
       padding: 0 20px;
     }
   }
@@ -58,19 +57,31 @@ body, input, button, select {
     }
   }
 
+  &__main {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+  }
+
+  &__input-label {
+    font-size: 12px;
+    color: $black_light_color;
+    margin-top: 15px;
+  }
+
   &__input {
     min-height: 44px;
     color: $gray_weight_color;
 
     &::placeholder {
       color: $gray_light_color;
-      font-size: 18px;
+      font-size: 12px;
       font-weight: bold;
     }
   }
 
   &__error {
-    margin: 15px;
+    margin: 5px 0;
     font-size: 12px;
     color: #de2424;
     font-weight: 600;
@@ -90,6 +101,10 @@ body, input, button, select {
     &--small {
       min-height: 44px;
       vertical-align: bottom;
+    }
+
+    &:disabled {
+      opacity: 0.5;
     }
   }
 }
@@ -125,9 +140,32 @@ body, input, button, select {
   border-radius: 5px;
   cursor: pointer;
 
-  &--danger{
+  &--green {
+    background: $green_color;
+    color: $white_color;
+  }
+
+  &--orange {
     background: $orange_color;
     color: $white_color;
+  }
+
+  &--gray {
+    background: $gray_color;
+    color: $white_color;
+  }
+
+  &--danger {
+    background: $danger_color;
+    color: $white_color;
+  }
+
+  &--small {
+    padding: 5px;
+  }
+
+  &--medium {
+    padding: 10px 20px;
   }
 }
 
@@ -149,5 +187,52 @@ body, input, button, select {
   td {
     padding: 10px;
     border: 1px solid $white_color;
+  }
+}
+
+.modal {
+  &--small {
+    min-width: 450px;
+  }
+
+  &--medium {
+    min-width: 520px;
+  }
+
+  &__main {
+    &--center {
+      text-align: center;
+    }
+
+    padding: 30px;
+  }
+
+  &__header {
+    background: $gray_weight_color;
+    padding: 15px 20px;
+    display: flex;
+    color: $white_color;
+    justify-content: space-between;
+  }
+
+  &__title {
+    text-align: left;
+    font-size: 16px;
+  }
+
+  &__close-btn {
+    font-size: 40px;
+    line-height: 20px;
+    cursor: pointer;
+  }
+
+  &__text {
+    font-size: 14px;
+    color: $black_light_color;
+  }
+
+  &__group-btn {
+    margin: 0 auto;
+    width: fit-content;
   }
 }
