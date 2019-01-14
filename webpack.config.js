@@ -7,6 +7,12 @@ const HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
   inject: 'body'
 })
 
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+const CopyWebpackPluginConfig = new CopyWebpackPlugin([
+         {from:'./assets/img',to:'img'},
+         {from:'./assets/font',to:'font'}
+     ]);
+
 module.exports = {
   entry: './src/index.js',
   output: {
@@ -18,7 +24,7 @@ module.exports = {
     extensions: ['.jsx', '.js'],
     alias: {
       assets: path.resolve(__dirname, './assets'),
-      images: path.resolve(__dirname, './assets/images'),
+      img: path.resolve(__dirname, './assets/img'),
       components: path.resolve(__dirname, './src/components'),
       dumbData: path.resolve(__dirname, './src/dumbData'),
       pages: path.resolve(__dirname, './src/pages'),
@@ -54,7 +60,10 @@ module.exports = {
       }
     ]
   },
-  plugins: [HtmlWebpackPluginConfig],
+  plugins: [
+    HtmlWebpackPluginConfig,
+    CopyWebpackPluginConfig
+  ],
   devServer: {
     contentBase: '/dist',
     historyApiFallback: true,
