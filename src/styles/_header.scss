@@ -41,17 +41,25 @@
 
     &__item {
       margin-left: 20px;
+      cursor: pointer;
+
+      &--text {
+        color: $gray_weight_color;
+
+        &:hover {
+          color: $gray_color;
+        }
+      }
     }
 
     &__icon {
-      color: $gray_light_color;
-      font-size: 12px;
+      font-size: 14px;
+      margin-right: 5px;
     }
 
     &__text {
       font-size: 12px;
       font-weight: 700;
-      color: $black_color;
     }
   }
 }

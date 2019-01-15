@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import { ProductItem } from 'components';
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 export default class ProductPage extends Component {
 
@@ -24,12 +23,7 @@ export default class ProductPage extends Component {
               {
                 arrayTemp.map((item, index) => {
                   return (
-                    <ReactCSSTransitionGroup
-                      transitionName="example"
-                      transitionEnterTimeout={1000}
-                      transitionLeaveTimeout={1000}>
-                        <ProductItem key={index} data={index} />
-                    </ReactCSSTransitionGroup>
+                    <ProductItem key={index} data={index} />
                   )
                 })
               }

@@ -2,6 +2,30 @@ body, input, button, select {
   font-family: 'Open Sans', sans-serif;
 }
 
+.help-block {
+  transform-origin: center left;
+}
+
+.message-enter {
+  opacity: 0.01;
+  transform: scale(0.9) translateY(50%);
+  height: 0;
+}
+.message-enter-active {
+  opacity: 1;
+  transform: scale(1) translateY(0%);
+  transition: all 600ms ease-in-out;
+}
+.message-exit {
+  opacity: 1;
+  transform: scale(1) translateY(0%);
+}
+.message-exit-active {
+  opacity: 0.01;
+  transform: scale(0.9) translateY(50%);
+  transition: all 300ms ease-in-out;
+}
+
 .menu {
   display: flex;
   justify-content: space-between;
@@ -126,7 +150,6 @@ body, input, button, select {
   }
 
   &__content {
-    background: $gray_light_2_color;
     flex-grow: 1;
   }
 

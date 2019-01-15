@@ -31,7 +31,7 @@ export default class Header extends Component {
   }
 
   openModal() {
-  this.setState({openModal: !this.state.openModal});
+    this.setState({openModal: !this.state.openModal});
   }
 
   showMenu = (menu) => {
@@ -78,7 +78,7 @@ export default class Header extends Component {
                   <span className="menu__item">BLOG</span>
               </div>
               <div className="header__account">
-                  <div className="header__account__item">
+                  <div className="header__account__item header__account__item--text">
                       <i className="header__account__icon fas fa-lock"></i>
                       <span className="header__account__text align-bt">LOG IN</span>
                    </div>
