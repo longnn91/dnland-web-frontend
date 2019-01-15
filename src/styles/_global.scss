@@ -58,7 +58,17 @@ body, input, button, select {
   font-size: 12px;
   font-weight: 700;
   cursor: pointer;
-  transition: 0.2s ease-in-out 0s, border-color 0.2s ease-in-out 0s, color 0.2s ease-in-out 0s;
+  transition: color 0.2s ease-in-out 0s;
+
+  &--sm {
+    height: 20px;
+    padding: 0 10px;
+  }
+
+  &--md {
+    height: 30px;
+    padding: 0 15px;
+  }
 
   &--green {
     background: $green_color;
@@ -79,6 +89,16 @@ body, input, button, select {
       border-color: transparent;
     }
   }
+
+  &--danger {
+    background: $danger_color;
+    color: $white_color;
+
+    &:hover {
+      opacity: 0.8;
+      border-color: transparent;
+    }
+  }
 }
 
 .input {
@@ -91,6 +111,10 @@ body, input, button, select {
   border: 1px solid $white_color;
   color: $gray_weight_color;
   border: 1px solid $gray_medium_1_color;
+
+  &--sm {
+    width: 220px;
+  }
 }
 
 .select {
@@ -269,4 +293,82 @@ body, input, button, select {
   	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
   	background-color: #D5D8DC;
   }
+}
+
+.modal {
+  &--small {
+    min-width: 450px;
+  }
+
+  &--medium {
+    min-width: 520px;
+  }
+
+  &__main {
+    background: $gray_light_color;
+    &--center {
+      text-align: center;
+    }
+
+    padding: 30px;
+  }
+
+  &__header {
+    background: $gray_color;
+    padding: 15px 20px;
+    display: flex;
+    color: $white_color;
+    justify-content: space-between;
+  }
+
+  &__title {
+    text-align: left;
+    font-size: 16px;
+  }
+
+  &__close-btn {
+    font-size: 40px;
+    line-height: 20px;
+    cursor: pointer;
+  }
+
+  &__text {
+    font-size: 14px;
+    color: $black_color;
+  }
+
+  &__group-btn {
+    margin: 0 auto;
+    width: fit-content;
+  }
+}
+
+.confirm {
+    &__pin {
+      position: relative;
+    }
+
+    &__main {
+      padding: 20px;
+      position: absolute;
+      right: 0;
+      top: calc(100% + 10px);
+      border: 2px solid $gray_medium_1_color;
+      border-radius: 5px;
+      background: $white_color;
+      cursor: auto;
+
+      &:after {
+        position: absolute;
+        top: -8px;
+        left: calc(100% - 45px);
+        content: '';
+        height: 12px;
+        width: 12px;
+        border: 1px solid $gray_medium_1_color;
+        transform: rotate(-45deg);
+        border-width: 2px 2px 0 0;
+        background: $white_color;
+      }
+    }
 }

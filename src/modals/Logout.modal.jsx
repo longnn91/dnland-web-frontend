@@ -6,16 +6,16 @@ import history from '../history';
 
 const customStyles = {
   content : {
-    top                   : '30%',
+    top                   : '300px',
     left                  : '50%',
     right                 : 'auto',
     bottom                : 'auto',
     marginRight           : '-50%',
     transform             : 'translate(-50%, -50%)',
     background            : 'white',
-    border                : 'none',
+    border                : '1px solid #b1b1b1',
     padding               : '0',
-    borderRadius          :  '8px'
+    borderRadius          :  '8px',
   },
   overlay: {
     backgroundColor       :  'rgba(255, 255, 255, 0.15)'
@@ -53,8 +53,8 @@ export default class LogoutModal extends Component {
               <div className="modal__main modal_main--center">
                   <h3 className="modal__text text-center">Do you want to logout?</h3>
                   <div className="modal__group-btn mgt-40">
-                      <button onClick={this.logout} className="button button--green button--medium mgr-10">Logout</button>
-                      <button onClick={this.props.openModal} className="button button--gray button--medium mgl-10">Cancel</button>
+                      <button onClick={this.logout} className="btn btn--danger btn--md button--medium mgr-10">Logout</button>
+                      <button onClick={this.props.openModal} className="btn btn--gray btn--md button--medium mgl-10">Cancel</button>
                   </div>
               </div>
           </div>
