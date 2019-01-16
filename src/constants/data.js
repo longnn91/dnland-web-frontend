@@ -1,27 +1,33 @@
 export const headerMenu = [
   {
-    name: 'HOME',
-    to: '/',
+    name: 'PRODUCT',
+    to: '/guest',
     exact: false,
-    auth: true
+    show: 'guest'
   },
   {
-    name: 'PRODUCTS',
-    to: '/product',
+    name: 'PRICING',
+    to: '/price',
     exact: false,
-    auth: true
+    show: 'all'
   },
   {
-    name: 'REGISTER',
-    to: '/register',
-    exact: true,
-    auth: false
+    name: 'DOWNLOAD',
+    to: '/download',
+    exact: false,
+    show: 'all'
   },
   {
-    name: 'LOG IN',
-    to: '/login',
+    name: 'ABOUT US',
+    to: '/about',
     exact: false,
-    auth: false
+    show: 'all'
+  },
+  {
+    name: 'PROFILE',
+    to: '/profile',
+    exact: false,
+    show: 'auth'
   }
 ];
 

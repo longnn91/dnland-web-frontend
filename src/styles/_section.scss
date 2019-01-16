@@ -62,3 +62,47 @@
     border-right: 40px solid transparent;
   }
 }
+
+.login {
+  &__error {
+    margin-top: 10px;
+  }
+
+  &__submit {
+    width: 100%;
+  }
+
+  &__notice-text {
+    color: $gray_color;
+    font-weight: 600;
+    font-size: 16px;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  &__facebook {
+    button {
+      height: 30px;
+      line-height: 0px;
+      font-size: 12px;
+      border-radius: 5px !important;
+      width: 100%;
+      margin-bottom: 20px;
+
+      &:hover {
+        opacity: 0.8;
+      }
+    }
+  }
+
+  &__google {
+    button {
+      width: 100%;
+      border-radius: 5px;
+
+      &:hover {
+        background: $gray_light_2_color !important;
+      }
+    }
+  }
+}

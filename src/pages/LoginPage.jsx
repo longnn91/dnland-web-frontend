@@ -72,32 +72,6 @@ export default class HomePage extends Component {
     const { username, password, error } = this.state;
     return (
       <div className="main main--center">
-          <section className="section-login form">
-            <form className="form__login form--vertical" onSubmit={this.handleSubmit}>
-              <div className="form__header">
-                <span className="form__header__title">Login form</span>
-                <span className="form__header__close-button"></span>
-              </div>
-              <div className="form__main">
-                <input type="text" className="form__input mgb-20" placeholder="Email..." name="username" value={username} onChange={this.handleChange} />
-                <input type="password" className="form__input" placeholder="Password..." name="password" value={password} onChange={this.handleChange} />
-                <label className="form__error">{error}</label>
-                <input type="submit" className="form__button" />
-              </div>
-            </form>
-          </section>
-          <FacebookLogin
-            appId="322579365133877"
-            autoLoad={false}
-            fields="name,email,picture"
-            callback={this.responseFacebook}
-          />
-          <GoogleLogin
-            clientId="1001066386274-2h71fhggr4p7jg0gfnm23f8s1u5ebqop.apps.googleusercontent.com"
-            buttonText="Google Login"
-            onSuccess={this.responseGoogle}
-            onFailure={this.responseGoogle}
-          />
       </div>
     )
   }

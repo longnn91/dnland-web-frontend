@@ -19,10 +19,10 @@ const routes = [
     main: () => <HomePage />
   },
   {
-    path: '/login',
+    path: '/guest',
     exact: false,
     auth: false,
-    main: ({ history }) => <LoginPage history={history}/>
+    main: ({ history }) => <ProductPage history={history}/>
   },
   {
     path: '/register',
