@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import { Link, Route } from 'react-router-dom';
 import Modal from 'react-modal';
 import { headerMenu } from 'constants/data';
-import LogoutModal from 'modals/Login.modal';
+import LogoutModal from 'modals/Logout.modal';
 import Login from 'components/Login';
+import Register from 'components/Register';
 import { isAuth } from 'actions/authAction';
 
 const MenuLink = ({label, to, exact}) => {
@@ -96,7 +97,10 @@ export default class Header extends Component {
               <div className="header__account">
                    { !isAuth() &&
                       <div className="confirm__pin">
-                          <button className="header__account__item btn btn--gray btn--md" onClick={this.openLogin}>LOGIN</button>
+                          <div className="header__account__item" onClick={this.openLogin}>
+                              <i className="header__account__icon fas fa-lock"></i>
+                              <span className="header__account__text align-bt">LOG IN</span>
+                           </div>
                           { this.state.openLogin &&
                             <div className="confirm__main">
                                 <Login history={this.props.history} />
@@ -107,19 +111,17 @@ export default class Header extends Component {
                    { !isAuth() &&
                      <div className="confirm__pin">
                          <button className="header__account__item btn btn--green btn--md" onClick={this.openRegister}>
-                             <i className="header__account__icon fas fa-lock"></i>
-                             <span className="header__account__text align-bt">REGISTER</span>
+                             REGISTER
                          </button>
                          { this.state.openRegister &&
                            <div className="confirm__main">
-                               <Login history={this.props.history} />
+                               <Register history={this.props.history} />
                            </div>
                          }
                      </div>
-
                    }
                    { isAuth() &&
-                     <button className="header__account__item btn btn--danger btn--sm" onClick={this.openModal}>LOGOUT</button>
+                      <button className="header__account__item btn btn--danger btn--sm" onClick={this.openModal}>LOGOUT</button>
                    }
                    <LogoutModal openModal={this.openModal} isOpenModal={this.state.openModal}></LogoutModal>
               </div>

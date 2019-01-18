@@ -1,3 +1,7 @@
+.wrapper {
+  // background-image: url('/img/background.webp');
+}
+
 .main {
   // background: $gray_light_color;
   margin-top: 100px;
@@ -12,24 +16,27 @@
   display: flex;
 
   &__search {
-    margin-bottom: 30px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
 
     &__form {
       display: flex;
     }
 
     &__input {
+      max-width: 300px;
       flex-grow: 1;
       margin-right: 10px;
     }
 
     &__select {
-      width: 160px;
+      width: 120px;
       margin-right: 10px;
     }
 
     &__submit {
-      width: 120px;
+      width: 100px;
     }
 
   }
@@ -63,7 +70,25 @@
   }
 }
 
-.login {
+.form {
+  &__btn {
+    min-width: 100px;
+
+    &--left {
+      align-self: flex-end;
+    }
+  }
+
+  &__main {
+    display: flex;
+    flex-direction: column;
+
+    &--left {
+      align-items: flex-start;
+      width: fit-content;
+    }
+  }
+
   &__error {
     margin-top: 10px;
   }

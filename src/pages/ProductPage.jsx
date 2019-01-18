@@ -1,7 +1,19 @@
 import React, {Component} from 'react';
 import { ProductItem } from 'components';
+import AddProductModal from 'modals/AddProduct.modal';
 
 export default class ProductPage extends Component {
+  constructor(props) {
+    super(props);
+    this.openModal = this.openModal.bind(this);
+    this.state = {
+      openModal: false
+    };
+  }
+
+  openModal() {
+  this.setState({openModal: !this.state.openModal});
+  }
 
   render() {
     let arrayTemp = new Array(8).fill(true);
@@ -17,8 +29,10 @@ export default class ProductPage extends Component {
                         <option value="mercedes">Mercedes</option>
                         <option value="audi">Audi</option>
                       </select>
-                      <input className="btn btn--green product-section__search__submit" type="submit" value="SEARCH" />
+                      <input className="btn btn--gray product-section__search__submit" type="submit" value="SEARCH" />
                   </form>
+                  <button className="btn btn--green product-section__search__post" onClick={this.openModal}>POST NEW</button>
+                  <AddProductModal openModal={this.openModal} isOpenModal={this.state.openModal}></AddProductModal>
               </div>
               {
                 arrayTemp.map((item, index) => {

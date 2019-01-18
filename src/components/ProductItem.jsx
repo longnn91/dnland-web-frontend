@@ -71,7 +71,7 @@ export default class ProductItem extends Component {
                   <div className="product__detail__info"></div>
               </div>
           </CSSTransition>
-          <button className="product__button btn btn--gray" onClick={this.closeAndShow}>{this.state.showDetail ? 'BASIC' : 'DETAIL'}</button>
+          <span className="product__button btn btn--gray" onClick={this.closeAndShow}>{this.state.showDetail ? 'CLOSE' : 'SEE MORE'}</span>
       </div>
     )
   }

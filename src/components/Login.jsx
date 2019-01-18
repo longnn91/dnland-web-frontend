@@ -72,17 +72,17 @@ export default class HomePage extends Component {
     const { username, password, error } = this.state;
     const disabled = !username || !password || error;
     return (
-      <div className="login">
+      <div className="form">
           <form onSubmit={this.handleSubmit}>
-              <div className="login__main">
+              <div className="form__main">
                   <input type="text" className="input input--sm mgb-20" placeholder="Email..." name="username" value={username} onChange={this.handleChange} />
                   <input type="password" className="input input--sm" placeholder="Password..." name="password" value={password} onChange={this.handleChange} />
-                  <label className="login__error error">{error}</label>
-                  <input type="submit" className="login__submit btn btn--green btn--md mgt-10 mgb-20" value="LOGIN" disabled={disabled} />
+                  <label className="form__error error">{error}</label>
+                  <input type="submit" className="form__submit btn btn--green btn--md mgt-10 mgb-20" value="LOGIN" disabled={disabled} />
               </div>
           </form>
-          <p className="login__notice-text">OR</p>
-          <div className="login__facebook">
+          <p className="form__notice-text">OR</p>
+          <div className="form__facebook">
               <FacebookLogin
                 appId="322579365133877"
                 autoLoad={false}
@@ -90,7 +90,7 @@ export default class HomePage extends Component {
                 callback={this.responseFacebook}
               />
           </div>
-          <div className="login__google">
+          <div className="form__google">
               <GoogleLogin
                 clientId="1001066386274-2h71fhggr4p7jg0gfnm23f8s1u5ebqop.apps.googleusercontent.com"
                 buttonText="Google Login"

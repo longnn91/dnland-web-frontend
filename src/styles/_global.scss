@@ -52,9 +52,13 @@ body, input, button, select {
 
 .text {
   color: $gray_color;
-  &__md {
+  &--md {
     font-size: 14px;
     font-weight: 600;
+  }
+
+  &--black {
+    color: $black_color;
   }
 }
 
@@ -128,6 +132,21 @@ body, input, button, select {
   }
 }
 
+.textarea {
+  color: $gray_weight_color;
+  border: 1px solid $gray_medium_1_color;
+  font-size: 14px;
+  border-radius: 4px;
+  padding: 10px;
+  resize: both;
+  overflow: auto;
+
+  &--md {
+    width: 500px;
+    height: 200px;
+  }
+}
+
 .select {
   height: 40px;
   width: 160px;
@@ -192,10 +211,13 @@ body, input, button, select {
     position: absolute;
     bottom: 0;
     right: 0;
-    height: 24px;
-    width: 90px;
     font-size: 12px;
     border-radius: 0;
+    height: fit-content;
+    padding: 5px 10px;
+    text-decoration: underline;
+    background: transparent;
+    color: $gray_weight_color;
   }
 }
 
@@ -307,6 +329,8 @@ body, input, button, select {
 }
 
 .modal {
+  z-index: $zindex-modal;
+
   &--small {
     min-width: 450px;
   }
@@ -315,8 +339,17 @@ body, input, button, select {
     min-width: 520px;
   }
 
+  &--large {
+    min-width: 700px;
+  }
+
   &__main {
     background: $gray_light_color;
+
+    &--white {
+      background: $white_color;
+    }
+
     &--center {
       text-align: center;
     }
@@ -326,7 +359,7 @@ body, input, button, select {
 
   &__header {
     background: $gray_color;
-    padding: 15px 20px;
+    padding: 8px 20px;
     display: flex;
     color: $white_color;
     justify-content: space-between;

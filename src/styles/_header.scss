@@ -55,11 +55,13 @@
     &__icon {
       font-size: 14px;
       margin-right: 5px;
+      color: $gray_medium_1_color;
     }
 
     &__text {
       font-size: 12px;
       font-weight: 700;
+      color: $gray_weight_color;
     }
   }
 }
