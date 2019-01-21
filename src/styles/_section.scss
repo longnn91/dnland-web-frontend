@@ -71,6 +71,21 @@
 }
 
 .form {
+  &__upload-img {
+    &__label {
+      padding: 10px;
+      border: 1px solid $gray_medium_1_color;
+      border-radius: 5px;
+      display: block;
+      cursor: pointer;
+      color: $gray_weight_color;
+    }
+
+    &__btn {
+      display: none;
+    }
+  }
+
   &__btn {
     min-width: 100px;
 

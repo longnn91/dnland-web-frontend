@@ -41,7 +41,7 @@ export default class ProductItem extends Component {
             unmountOnExit>
               <div className="product__detail">
                   <div className="product__detail__galaxy galaxy">
-                      <div className="galaxy__img placeholder">
+                      <div className="galaxy__img srollable">
                           <input type="radio" name={`images${key}`} id={`radio1and${key}`} defaultChecked/>
                           <input type="radio" name={`images${key}`} id={`radio2and${key}`}/>
                           <input type="radio" name={`images${key}`} id={`radio3and${key}`}/>

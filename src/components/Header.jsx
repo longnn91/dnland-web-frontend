@@ -89,7 +89,11 @@ export default class Header extends Component {
       <header className="header">
           <div className="header__container">
               <div className="header__logo">
-                  <img className="header__logo__img" src="img/logo-dark.svg" alt="" />
+                  <div className="header__logo__text cursor-pointer">
+                      <span>MAT</span>
+                      <span>BANG</span>
+                      <span>XANH</span>
+                  </div>
               </div>
               <div className="header__menu menu">
                   {this.showMenu(this.menu)}

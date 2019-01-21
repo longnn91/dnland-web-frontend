@@ -5,7 +5,7 @@
   width: 100%;
   padding: 15px 0;
   background: $white_color;
-  box-shadow: $white_color 0px 10px 40px 0px;
+  // box-shadow: $white_color 0px 10px 40px 0px;
   z-index: $zindex-max;
 
   &__container {
@@ -23,6 +23,21 @@
 
     &__img {
       width: 115px;
+    }
+
+    &__text {
+      font-size: 30px;
+      font-weight: bold;
+      color: $gray_weight_color;
+      letter-spacing: -4px;
+
+      span {
+        margin-right: 5px;
+      }
+
+      span:nth-child(3) {
+        color: $green_color;
+      }
     }
   }
 

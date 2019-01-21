@@ -24,15 +24,32 @@ const customStyles = {
 // Make sure to bind modal to your appElement (http://reactcommunity.org/react-modal/accessibility/)
 Modal.setAppElement('#root');
 
+const ImageSlider = ({images, handleClose}) => {
+  const listImage = [];
+  images.map((item, key) => {
+    let src = URL.createObjectURL(item);
+    listImage.push(
+      <div className="image-slider__item" key={key}>
+          <span className="image-slider__item__close-btn" onClick={() => handleClose(key)}>&times;</span>
+          <img className="image-slider__item__img" src={src} />
+      </div>)
+    });
+    listImage ? listImage.push(<label htmlFor="upload-image" key={images.length} className="image-slider__plus-btn">&#43;</label>) : null;
+  return <div className="image-slider mgb-20"> {listImage} </div>
+}
+
 export default class AddProductModal extends Component {
   constructor(props) {
     super(props);
     this.next = this.next.bind(this);
     this.back = this.back.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.handleUploadImage = this.handleUploadImage.bind(this);
+    this.removeImage = this.removeImage.bind(this);
     this.state = {
       phone: '',
-      skip: false
+      skip: false,
+      images: []
     }
   }
 
@@ -41,6 +58,21 @@ export default class AddProductModal extends Component {
     this.setState(
       { [name]: value }
     );
+  }
+
+  handleUploadImage(e) {
+    let tempArr = [];
+    if (e.target && e.target.files) {
+      Object.keys(e.target.files).forEach(key => {
+        tempArr.push(e.target.files[key]);
+      });
+    }
+    this.setState({ images: [...this.state.images, ...tempArr] });
+  }
+
+  removeImage(key) {
+    this.state.images.splice(key,1);
+    this.setState({ images: this.state.images });
   }
 
   back(e) {
@@ -69,7 +101,7 @@ export default class AddProductModal extends Component {
                   <h2 className="modal__title">Create new post</h2>
                   <div className="modal__close-btn" onClick={this.props.openModal}>&times;</div>
               </div>
-              <div className="modal__main modal__main--white modal_main--center">
+              <div className="modal__main modal__main--white modal_main--center srollable">
                   <form className="form">
                       { !skip &&
                           <div className="form__main form__main--left">
@@ -85,10 +117,17 @@ export default class AddProductModal extends Component {
                             <p className="form__input-label mgb-20">
                                 <span className="text text--md text--black mgr-10">Phone: </span>
                                 <span className="text text--md mgr-20">{phone}</span>
-                                <span class="btn btn--gray" onClick={this.back}>EDIT</span>
+                                <span className="btn btn--gray" onClick={this.back}>EDIT</span>
                             </p>
                             <p className="form__input-label mgb-10">Please fill post's description in here!</p>
                             <textarea className="textarea textarea--md mgb-20"></textarea>
+                            <div className={`form__upload-img mgb-20 ${this.state.images.length > 0 ? 'hidden' : ''}`}>
+                                <label className="form__upload-img__label" htmlFor="upload-image">Upload image</label>
+                                <input type="file" id="upload-image" className="form__upload-img__btn" name="images" onChange={this.handleUploadImage} accept="image/*" multiple />
+                            </div>
+                            { this.state.images.length > 0 &&
+                              <ImageSlider images={this.state.images} handleClose={this.removeImage}></ImageSlider>
+                            }
                             <input type="submit" value="POST" className="btn btn--green" />
                         </div>
                       }
