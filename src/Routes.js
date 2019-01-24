@@ -5,7 +5,8 @@ import {
   NotFoundPage,
   ProductPage,
   RegisterPage,
-  MessagePage
+  MessagePage,
+  CreatePostPage
 } from 'pages';
 import { Temps } from 'components';
 import { isAuth } from 'actions/authAction';
@@ -41,6 +42,12 @@ const routes = [
     exact: false,
     auth: true,
     main: () => <ProductPage />
+  },
+  {
+    path: '/create-post',
+    exact: false,
+    auth: true,
+    main: () => <CreatePostPage />
   },
   {
     path: '',

@@ -425,8 +425,6 @@ body.ReactModal__Body--open {
 }
 
 .image-slider {
-  max-width: 620px;
-
   &__plus-btn {
     height: 120px;
     width: 120px;
@@ -481,6 +479,92 @@ body.ReactModal__Body--open {
     &__img {
       height: 100%;
       width: auto;
+    }
+  }
+}
+
+.form {
+  max-width: $max-width-form;
+
+  &--center {
+    margin: 0 auto;
+  }
+
+  &__upload-img {
+    &__label {
+      padding: 10px;
+      border: 1px solid $gray_medium_1_color;
+      border-radius: 5px;
+      display: block;
+      cursor: pointer;
+      color: $gray_weight_color;
+      width: 160px;
+      text-align: center;
+    }
+
+    &__btn {
+      display: none;
+    }
+  }
+
+  &__btn {
+    min-width: 100px;
+    max-width: 220px;
+
+    &--left {
+      align-self: flex-end;
+    }
+  }
+
+  &__main {
+    display: flex;
+    flex-direction: column;
+
+    &--left {
+      align-items: flex-start;
+      width: fit-content;
+    }
+  }
+
+  &__error {
+    margin-top: 10px;
+  }
+
+  &__submit {
+    width: 100%;
+  }
+
+  &__notice-text {
+    color: $gray_color;
+    font-weight: 600;
+    font-size: 16px;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+
+  &__facebook {
+    button {
+      height: 30px;
+      line-height: 0px;
+      font-size: 12px;
+      border-radius: 5px !important;
+      width: 100%;
+      margin-bottom: 20px;
+
+      &:hover {
+        opacity: 0.8;
+      }
+    }
+  }
+
+  &__google {
+    button {
+      width: 100%;
+      border-radius: 5px;
+
+      &:hover {
+        background: $gray_light_2_color !important;
+      }
     }
   }
 }

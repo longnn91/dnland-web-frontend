@@ -22,28 +22,28 @@ export default class DashboardPage extends Component {
               </Route>
           </Switch>
           <div className="main">
-            <Switch>
-              {
-                routes.map((route, index) => {
-                  let redirectComponent = route.main;
-                  if (isAuth() && !route.auth) {
-                    redirectComponent = (props) => <Redirect to={{pathname: "/product"}} />;
-                  }
+              <Switch>
+                {
+                  routes.map((route, index) => {
+                    let redirectComponent = route.main;
+                    if (isAuth() && !route.auth) {
+                      redirectComponent = (props) => <Redirect to={{pathname: "/product"}} />;
+                    }
 
-                  if (!isAuth() && route.auth) {
-                    redirectComponent = (props) => <Redirect to={{pathname: "/guest"}} />;
-                  }
-                  return (
-                    <Route
-                      key={index}
-                      path={route.path}
-                      exact={route.exact}
-                      component={redirectComponent}
-                   />
-                  )
-                })
-              }
-            </Switch>
+                    if (!isAuth() && route.auth) {
+                      redirectComponent = (props) => <Redirect to={{pathname: "/guest"}} />;
+                    }
+                    return (
+                      <Route
+                        key={index}
+                        path={route.path}
+                        exact={route.exact}
+                        component={redirectComponent}
+                     />
+                    )
+                  })
+                }
+              </Switch>
           </div>
           <Footer/>
       </div>

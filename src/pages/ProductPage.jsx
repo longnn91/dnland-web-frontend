@@ -31,8 +31,7 @@ export default class ProductPage extends Component {
                       </select>
                       <input className="btn btn--gray product-section__search__submit" type="submit" value="SEARCH" />
                   </form>
-                  <button className="btn btn--green product-section__search__post" onClick={this.openModal}>POST NEW</button>
-                  <AddProductModal openModal={this.openModal} isOpenModal={this.state.openModal}></AddProductModal>
+                  <button className="btn btn--green product-section__search__post" onClick={() => { this.props.history.push('/add-ticket')}}>POST NEW</button>
               </div>
               {
                 arrayTemp.map((item, index) => {

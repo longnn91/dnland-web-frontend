@@ -6,7 +6,7 @@
   // background: $gray_light_color;
   margin-top: 100px;
   // box-shadow: rgba(0, 0, 0, 0.12) 0px 5px 40px 0px;
-  min-height: calc(100vh - 60px);
+  min-height: calc(100vh - 100px);
 }
 
 .product-section {
@@ -14,6 +14,7 @@
   margin: 0 auto;
   padding: 0 20px;
   display: flex;
+  justify-content: space-between;
 
   &__search {
     margin-bottom: 20px;
@@ -70,79 +71,8 @@
   }
 }
 
-.form {
-  &__upload-img {
-    &__label {
-      padding: 10px;
-      border: 1px solid $gray_medium_1_color;
-      border-radius: 5px;
-      display: block;
-      cursor: pointer;
-      color: $gray_weight_color;
-    }
-
-    &__btn {
-      display: none;
-    }
-  }
-
-  &__btn {
-    min-width: 100px;
-
-    &--left {
-      align-self: flex-end;
-    }
-  }
-
-  &__main {
-    display: flex;
-    flex-direction: column;
-
-    &--left {
-      align-items: flex-start;
-      width: fit-content;
-    }
-  }
-
-  &__error {
-    margin-top: 10px;
-  }
-
-  &__submit {
-    width: 100%;
-  }
-
-  &__notice-text {
-    color: $gray_color;
-    font-weight: 600;
-    font-size: 16px;
-    margin-bottom: 20px;
-    text-align: center;
-  }
-
-  &__facebook {
-    button {
-      height: 30px;
-      line-height: 0px;
-      font-size: 12px;
-      border-radius: 5px !important;
-      width: 100%;
-      margin-bottom: 20px;
-
-      &:hover {
-        opacity: 0.8;
-      }
-    }
-  }
-
-  &__google {
-    button {
-      width: 100%;
-      border-radius: 5px;
-
-      &:hover {
-        background: $gray_light_2_color !important;
-      }
-    }
-  }
+.page-section {
+  max-width: $max-width;
+  margin: 0 auto;
+  padding: 0 20px;
 }
