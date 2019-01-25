@@ -41,13 +41,13 @@ const routes = [
     path: '/product',
     exact: false,
     auth: true,
-    main: () => <ProductPage />
+    main: ({ history }) => <ProductPage history={history} />
   },
   {
     path: '/create-post',
     exact: false,
     auth: true,
-    main: () => <CreatePostPage />
+    main: ({ history }) => <CreatePostPage history={history} />
   },
   {
     path: '',

@@ -23,7 +23,7 @@ export default class RegisterPage extends Component {
   handleSubmit(e) {
     e.preventDefault();
       const { username, email, password, confirmPassword } = this.state;
-      register(this.state).then((response) => {
+      register(this.state).then(() => {
         this.props.history.push('/register-success');
       }).catch((error) => {
         this.setState({error: error.message})

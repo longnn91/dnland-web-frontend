@@ -8,14 +8,6 @@ const REQUEST_HEADER = {
 };
 axios.defaults.baseURL = API_URL;
 
-axios.interceptors.request.use(function (config) {
-  config.headers.Authorization = getToken();
-  Object.assign(config.headers, REQUEST_HEADER);
-    return config;
-  }, function (error) {
-    return Promise.reject(error);
-  });
-
   axios.interceptors.response.use(function (response) {
     // Do something with response data
     return response;
@@ -33,7 +25,16 @@ axios.interceptors.request.use(function (config) {
   });
 
 
-const callAPI = (url, method, data) => {
+const callAPI = (url, method, data, headerConfig) => {
+  const REQUEST_HEADER_FINAL = headerConfig ? headerConfig : REQUEST_HEADER;
+  axios.interceptors.request.use(function (config) {
+    config.headers.Authorization = getToken();
+    Object.assign(config.headers, REQUEST_HEADER_FINAL);
+      return config;
+    }, function (error) {
+      return Promise.reject(error);
+    });
+
   return axios({
     url: url,
     method: method,

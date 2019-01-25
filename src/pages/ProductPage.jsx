@@ -16,6 +16,7 @@ export default class ProductPage extends Component {
   }
 
   render() {
+    console.log(this.props);
     let arrayTemp = new Array(8).fill(true);
     return(
       <section className="product-section">
@@ -31,7 +32,7 @@ export default class ProductPage extends Component {
                       </select>
                       <input className="btn btn--gray product-section__search__submit" type="submit" value="SEARCH" />
                   </form>
-                  <button className="btn btn--green product-section__search__post" onClick={() => { this.props.history.push('/add-ticket')}}>POST NEW</button>
+                  <button className="btn btn--green product-section__search__post" onClick={() => { this.props.history.push('/create-post')}}>POST NEW</button>
               </div>
               {
                 arrayTemp.map((item, index) => {

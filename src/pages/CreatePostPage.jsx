@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import { createPost } from 'actions/postAction';
 
 const ImageSlider = ({images, handleClose}) => {
   const listImage = [];
@@ -22,8 +23,10 @@ export default class CreatePostPage extends Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleUploadImage = this.handleUploadImage.bind(this);
     this.removeImage = this.removeImage.bind(this);
+    this.uploadImage = this.uploadImage.bind(this);
     this.state = {
       phone: '',
+      description: '',
       skip: false,
       images: []
     }
@@ -46,6 +49,16 @@ export default class CreatePostPage extends Component {
     this.setState({ images: [...this.state.images, ...tempArr] });
   }
 
+  uploadImage(e) {
+    e.preventDefault();
+    console.log(this.state);
+    createPost(this.state).then(() => {
+      this.props.history.push('/product');
+    }).catch((error) => {
+      this.setState({error: error.message})
+    });
+  }
+
   removeImage(key) {
     this.state.images.splice(key,1);
     this.setState({ images: this.state.images });
@@ -64,10 +77,10 @@ export default class CreatePostPage extends Component {
   }
 
   render() {
-    const {phone, skip} = this.state;
+    const {phone, skip, description} = this.state;
     return (
       <div className="product-section">
-          <form className="form">
+          <form className="form" onSubmit={this.uploadImage}>
               <h3 className="text mgb-50">Create new post</h3>
               { !skip &&
                   <div className="form__main">
@@ -86,7 +99,7 @@ export default class CreatePostPage extends Component {
                         <span className="btn btn--gray" onClick={this.back}>EDIT</span>
                     </p>
                     <p className="form__input-label mgb-10">Please fill post's description in here!</p>
-                    <textarea className="textarea textarea--md mgb-20"></textarea>
+                    <textarea name="description" value={description} onChange={this.handleChange} className="textarea textarea--md mgb-20"></textarea>
                     <div className={`form__upload-img mgb-20 ${this.state.images.length > 0 ? 'hidden' : ''}`}>
                         <label className="form__upload-img__label" htmlFor="upload-image">Upload image</label>
                         <input type="file" id="upload-image" className="form__upload-img__btn" name="images" onChange={this.handleUploadImage} accept="image/*" multiple />
