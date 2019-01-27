@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import { ProductItem } from 'components';
-import AddProductModal from 'modals/AddProduct.modal';
 
 export default class ProductPage extends Component {
   constructor(props) {
@@ -16,7 +15,6 @@ export default class ProductPage extends Component {
   }
 
   render() {
-    console.log(this.props);
     let arrayTemp = new Array(8).fill(true);
     return(
       <section className="product-section">

@@ -51,6 +51,15 @@
     flex-basis: 22%;
     background: $gray_light_color;
   }
+
+  &__main-area {
+    flex-grow: 1;
+    margin-right: 30px;
+
+    .textarea {
+      width: 100%;
+    }
+  }
 }
 
 .flag {

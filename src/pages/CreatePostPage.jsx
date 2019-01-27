@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {ToastContainer, ToastStore} from 'react-toasts';
 import { createPost } from 'actions/postAction';
 
 const ImageSlider = ({images, handleClose}) => {
@@ -52,8 +53,9 @@ export default class CreatePostPage extends Component {
   uploadImage(e) {
     e.preventDefault();
     console.log(this.state);
-    createPost(this.state).then(() => {
-      this.props.history.push('/product');
+    createPost(this.state).then((response) => {
+      // this.props.history.push('/product');
+      ToastStore.success(response.data.message);
     }).catch((error) => {
       this.setState({error: error.message})
     });
@@ -80,7 +82,8 @@ export default class CreatePostPage extends Component {
     const {phone, skip, description} = this.state;
     return (
       <div className="product-section">
-          <form className="form" onSubmit={this.uploadImage}>
+          <ToastContainer position={ToastContainer.POSITION.TOP_CENTER} store={ToastStore}/>
+          <form className="form product-section__main-area" onSubmit={this.uploadImage}>
               <h3 className="text mgb-50">Create new post</h3>
               { !skip &&
                   <div className="form__main">
@@ -107,7 +110,10 @@ export default class CreatePostPage extends Component {
                     { this.state.images.length > 0 &&
                       <ImageSlider images={this.state.images} handleClose={this.removeImage}></ImageSlider>
                     }
-                    <input type="submit" value="POST" className="form__btn btn btn--green mgb-50" />
+                    <div className="form__group  mgb-50">
+                        <input type="button" onClick={this.back} value="BACK" className="form__btn btn btn--gray mgr-30" />
+                        <input type="submit" value="POST" className="form__btn btn btn--green" />
+                    </div>
                 </div>
               }
           </form>

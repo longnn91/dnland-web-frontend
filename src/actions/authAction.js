@@ -2,7 +2,7 @@ import callAPI from '../apiCaller';
 import Cookies from 'universal-cookie';
 
 const cookies = new Cookies();
-const EPXIRE_DAY = 1;
+const EPXIRE_DAY = 24;
 
 export const login = (data, history) => {
   const res = callAPI('auth/login', 'POST', data);

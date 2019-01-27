@@ -8,7 +8,13 @@ const CONFIG_HEADER = {
 export const createPost = (data) => {
   let formData = new FormData();
   Object.keys(data).forEach(key => {
-    formData.append([key], data[key]);
+    if (Array.isArray(data[key])) {
+        data[key].forEach((item, index) => {
+          formData.append("images", item);
+        });
+    } else {
+      formData.append([key], data[key]);
+    }
   });
 
   return callAPI('post', 'POST', formData, CONFIG_HEADER);
