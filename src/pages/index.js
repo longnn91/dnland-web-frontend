@@ -6,6 +6,7 @@ import NotFoundPage from './NotFoundPage';
 import RegisterPage from './RegisterPage';
 import MessagePage from './MessagePage';
 import CreatePostPage from './CreatePostPage';
+import AccountPage from './AccountPage';
 
 export {
   DashboardPage,
@@ -15,5 +16,6 @@ export {
   LoginPage,
   RegisterPage,
   MessagePage,
-  CreatePostPage
+  CreatePostPage,
+  AccountPage
  };

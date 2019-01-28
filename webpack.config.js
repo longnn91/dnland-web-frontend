@@ -30,7 +30,8 @@ module.exports = {
       pages: path.resolve(__dirname, './src/pages'),
       actions: path.resolve(__dirname, './src/actions'),
       constants: path.resolve(__dirname, './src/constants'),
-      modals: path.resolve(__dirname, './src/modals')
+      modals: path.resolve(__dirname, './src/modals'),
+      i18n: path.resolve(__dirname, './i18n')
     }
   },
   module: {

@@ -39,9 +39,12 @@ class ProductList extends Component {
     //   this.setState(this.state);
     // })
     this.props.getProductList();
+    this.props.getProductList();
+    this.props.getProductList();
   }
 
   render() {
+    console.log('zzzz');
     var { product } = this.props;
     return(
       <table className="product-page__main__table table">

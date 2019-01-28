@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { ProductItem } from 'components';
+import { ProductItem, ProductList } from 'components';
 
 export default class ProductPage extends Component {
   constructor(props) {

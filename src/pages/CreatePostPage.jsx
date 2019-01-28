@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {ToastContainer, ToastStore} from 'react-toasts';
+import {toastr} from 'react-redux-toastr'
 import { createPost } from 'actions/postAction';
 
 const ImageSlider = ({images, handleClose}) => {
@@ -52,10 +52,9 @@ export default class CreatePostPage extends Component {
 
   uploadImage(e) {
     e.preventDefault();
-    console.log(this.state);
     createPost(this.state).then((response) => {
       // this.props.history.push('/product');
-      ToastStore.success(response.data.message);
+      toastr.success('The title', response.data.message);
     }).catch((error) => {
       this.setState({error: error.message})
     });
@@ -82,7 +81,6 @@ export default class CreatePostPage extends Component {
     const {phone, skip, description} = this.state;
     return (
       <div className="product-section">
-          <ToastContainer position={ToastContainer.POSITION.TOP_CENTER} store={ToastStore}/>
           <form className="form product-section__main-area" onSubmit={this.uploadImage}>
               <h3 className="text mgb-50">Create new post</h3>
               { !skip &&

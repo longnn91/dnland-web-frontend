@@ -6,7 +6,8 @@ import {
   ProductPage,
   RegisterPage,
   MessagePage,
-  CreatePostPage
+  CreatePostPage,
+  AccountPage
 } from 'pages';
 import { Temps } from 'components';
 import { isAuth } from 'actions/authAction';
@@ -42,6 +43,12 @@ const routes = [
     exact: false,
     auth: true,
     main: ({ history }) => <ProductPage history={history} />
+  },
+  {
+    path: '/account',
+    exact: false,
+    auth: true,
+    main: ({ history }) => <AccountPage history={history} />
   },
   {
     path: '/create-post',
