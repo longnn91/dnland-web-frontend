@@ -7,7 +7,7 @@ const remove = (index) => {
 
 const add = (item) => {
   return {
-    type = 'ADD_ITEM',
+    type: 'ADD_ITEM',
     item: item
   }
 }

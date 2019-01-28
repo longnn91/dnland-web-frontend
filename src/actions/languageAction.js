@@ -1,22 +1,15 @@
-import { languageType } from 'constants/languageType';
+import { languageType } from 'constants/actionTypes';
 
-const setDefaultLanuage = () => {
+export const setLanguage = (language) => {
   return {
-    type: productType.SET_DEFAULT_LANGUAGE,
-    lanuage: 'en'
-  }
-}
-
-const setLanguage = (language) => {
-  return {
-    type: productType.CHANGE_LANGUAGE,
+    type: languageType.CHANGE_LANGUAGE,
     language
   }
 }
 
-const loadTranslation = (translations) => {
+export const loadTranslation = (translations) => {
   return {
-    type: productType.CHANGE_LANGUAGE,
+    type: languageType.LOAD_TRANSLATIONS,
     translations
   }
 }

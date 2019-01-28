@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {connect} from 'react-redux';
 import { Link, Route } from 'react-router-dom';
 import Modal from 'react-modal';
 import { headerMenu } from 'constants/data';
@@ -6,6 +7,8 @@ import LogoutModal from 'modals/Logout.modal';
 import Login from 'components/Login';
 import Register from 'components/Register';
 import { isAuth } from 'actions/authAction';
+import { setLanguage } from 'actions/languageAction';
+import { translate } from 'utils/translations';
 
 const MenuLink = ({label, to, exact}) => {
   return (
@@ -22,18 +25,24 @@ const MenuLink = ({label, to, exact}) => {
   )
 }
 
-export default class Header extends Component {
+class Header extends Component {
   constructor(props) {
     super(props);
     this.openModal = this.openModal.bind(this);
     this.openLogin = this.openLogin.bind(this);
     this.openRegister = this.openRegister.bind(this);
+    this.changeLanguage = this.changeLanguage.bind(this);
     this.menu = headerMenu;
     this.state = {
       openModal: false,
       openLogin: false,
       openRegister: false
     };
+  }
+
+  changeLanguage() {
+    let lang = this.props.language === 'vi' ? 'en' : 'vi';
+    this.props.setLanguage(lang);
   }
 
   openModal() {
@@ -89,7 +98,8 @@ export default class Header extends Component {
       <header className="header">
           <div className="header__container">
               <div className="header__logo">
-                  <div className="header__logo__text cursor-pointer">
+                  <span>{translate('price')}</span>
+                  <div className="header__logo__text cursor-pointer" onClick={this.changeLanguage}>
                       <span>MAT</span>
                       <span>BANG</span>
                       <span>XANH</span>
@@ -134,3 +144,20 @@ export default class Header extends Component {
     )
   }
 }
+
+const mapStateToProps = state => {
+  console.log(state);
+  return {
+    language: state.i18n.language
+  }
+}
+
+const mapDispatchToProps = (dispatch, props) => {
+  return {
+    setLanguage: (key) => {
+      dispatch(setLanguage(key));
+    }
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header);
