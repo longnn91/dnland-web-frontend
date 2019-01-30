@@ -47,6 +47,7 @@ body.ReactModal__Body--open {
     color: $gray_color;
     cursor: pointer;
     transition: all 0.3s ease-out 0s;
+    text-transform: uppercase;
 
     &:hover {
       color: $black_color;
@@ -408,6 +409,7 @@ body.ReactModal__Body--open {
       background: $white_color;
       cursor: auto;
       box-shadow: rgba(0, 0, 0, 0.4) 0px 5px 20px 0px;
+      z-index: 1;
 
       &:after {
         position: absolute;

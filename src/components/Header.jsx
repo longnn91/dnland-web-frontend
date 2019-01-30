@@ -8,7 +8,7 @@ import Login from 'components/Login';
 import Register from 'components/Register';
 import { isAuth } from 'actions/authAction';
 import { setLanguage } from 'actions/languageAction';
-import { translate } from 'utils/translations';
+import { trans } from 'utils/translations';
 
 const MenuLink = ({label, to, exact}) => {
   return (
@@ -18,7 +18,7 @@ const MenuLink = ({label, to, exact}) => {
       children={({match}) => {
         var active = match ? 'active' : 'none-active';
         return (
-          <Link className={`menu__item ${active}`} to={to}>{label}</Link>
+          <Link className={`menu__item ${active}`} to={to}>{trans(label)}</Link>
         )
       }}
     />
@@ -94,12 +94,12 @@ class Header extends Component {
   }
 
   render() {
+    const language = this.props.language;
     return (
       <header className="header">
           <div className="header__container">
               <div className="header__logo">
-                  <span>{translate('price')}</span>
-                  <div className="header__logo__text cursor-pointer" onClick={this.changeLanguage}>
+                  <div className="header__logo__text cursor-pointer hidden">
                       <span>MAT</span>
                       <span>BANG</span>
                       <span>XANH</span>
@@ -109,33 +109,37 @@ class Header extends Component {
                   {this.showMenu(this.menu)}
               </div>
               <div className="header__account">
-                   { !isAuth() &&
+                    <div className="header__language" onClick={this.changeLanguage}>
+                         <img src="img/en-flag.svg" className={ language === 'vi' ? 'header__language__show' : '' }></img>
+                         <img src="img/vi-flag.svg" className={ language === 'en' ? 'header__language__show' : '' }></img>
+                    </div>
+                    { !isAuth() &&
+                       <div className="confirm__pin">
+                           <div className="header__account__item" onClick={this.openLogin}>
+                               <i className="header__account__icon fas fa-lock"></i>
+                               <span className="header__account__text align-bt">{trans('login')}</span>
+                            </div>
+                           { this.state.openLogin &&
+                             <div className="confirm__main">
+                                 <Login history={this.props.history} />
+                             </div>
+                           }
+                        </div>
+                    }
+                    { !isAuth() &&
                       <div className="confirm__pin">
-                          <div className="header__account__item" onClick={this.openLogin}>
-                              <i className="header__account__icon fas fa-lock"></i>
-                              <span className="header__account__text align-bt">LOG IN</span>
-                           </div>
-                          { this.state.openLogin &&
+                          <button className="header__account__item btn btn--green btn--md" onClick={this.openRegister}>
+                              {trans('register')}
+                          </button>
+                          { this.state.openRegister &&
                             <div className="confirm__main">
-                                <Login history={this.props.history} />
+                                <Register history={this.props.history} />
                             </div>
                           }
-                       </div>
-                   }
-                   { !isAuth() &&
-                     <div className="confirm__pin">
-                         <button className="header__account__item btn btn--green btn--md" onClick={this.openRegister}>
-                             REGISTER
-                         </button>
-                         { this.state.openRegister &&
-                           <div className="confirm__main">
-                               <Register history={this.props.history} />
-                           </div>
-                         }
-                     </div>
-                   }
+                      </div>
+                    }
                    { isAuth() &&
-                      <button className="header__account__item btn btn--danger btn--sm" onClick={this.openModal}>LOGOUT</button>
+                      <button className="header__account__item btn btn--danger btn--sm" onClick={this.openModal}>{trans('logout')}</button>
                    }
                    <LogoutModal openModal={this.openModal} isOpenModal={this.state.openModal}></LogoutModal>
               </div>
@@ -146,7 +150,6 @@ class Header extends Component {
 }
 
 const mapStateToProps = state => {
-  console.log(state);
   return {
     language: state.i18n.language
   }

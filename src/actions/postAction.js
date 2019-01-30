@@ -1,4 +1,5 @@
 import callAPI from '../apiCaller';
+import { postType } from 'constants/actionTypes';
 
 const CONFIG_HEADER = {
   'Content-Type': 'multipart/form-data',
@@ -18,4 +19,19 @@ export const createPost = (data) => {
   });
 
   return callAPI('post', 'POST', formData, CONFIG_HEADER);
+}
+
+const _getPostList = (postList) => {
+  return {
+    type: postType.GET_POST_LIST,
+    postList
+  }
+}
+
+export const getPostList = () => {
+  return dispatch => {
+    return callAPI('post', 'GET').then( res => {
+      dispatch(_getPostList(res.data.PostList));
+    });
+  }
 }

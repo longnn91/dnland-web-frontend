@@ -8,6 +8,23 @@
   // box-shadow: $white_color 0px 10px 40px 0px;
   z-index: $zindex-max;
 
+  &__language {
+    position: relative;
+    cursor: pointer;
+    margin-left: 15px;
+
+    & > img {
+      height: 30px;
+      transition: all 0.8s ease-in-out 0s;
+    }
+
+    &__show {
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+  }
+
   &__container {
     display: flex;
     justify-content: space-between;
@@ -51,8 +68,8 @@
     flex-basis: 25%;
     display: flex;
     justify-content: flex-end;
-    align-items: center;
     flex-wrap: nowrap;
+    align-items: center;
 
     &__item {
       margin-left: 20px;

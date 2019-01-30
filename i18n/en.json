@@ -1,6 +1,10 @@
 {
   "price": "Price",
-  "donwload": "Download",
+  "download": "Download",
   "about_us": "About Us",
-  "profile": "Profile"
+  "profile": "Profile",
+  "product": "Product",
+  "logout": "LOGOUT",
+  "login": "LOGIN",
+  "register": "REGISTER"
 }

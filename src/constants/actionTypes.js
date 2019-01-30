@@ -11,3 +11,8 @@ export const languageType = {
   CHANGE_LANGUAGE: 'CHANGE_LANGUAGE',
   LOAD_TRANSLATIONS: 'LOAD_TRANSLATIONS'
 }
+
+
+export const postType = {
+  GET_POST_LIST: 'GET_POST_LIST'
+}

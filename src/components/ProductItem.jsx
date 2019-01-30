@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import { CSSTransition } from 'react-transition-group';
+import { API_SERVER } from 'constants/config';
 
 export default class ProductItem extends Component {
   constructor() {
@@ -15,13 +16,17 @@ export default class ProductItem extends Component {
   }
 
   render() {
-    let key = this.props.data;
+    const { order, data } = this.props;
+    console.log(data);
+    const imagesURL = data.images.map(item => `${API_SERVER}/${data.location}/${item}`);
+    const countImage = imagesURL.length;
+    const firstImageURL = countImage > 0 ? imagesURL[0] : null;
     return (
       <div className="product">
           { !this.state.showDetail &&
             <div className="product__basic">
                 <div className="product__header">
-                    <img className="product__thumb" src="img/img1" alt="" align="middle" />
+                    <img className="product__thumb" src={firstImageURL} alt="" align="middle" />
                 </div>
                 <div className="product__content">
                     <div className="mgl-50 fz-20">Place</div>
@@ -42,33 +47,37 @@ export default class ProductItem extends Component {
               <div className="product__detail">
                   <div className="product__detail__galaxy galaxy">
                       <div className="galaxy__img srollable">
-                          <input type="radio" name={`images${key}`} id={`radio1and${key}`} defaultChecked/>
-                          <input type="radio" name={`images${key}`} id={`radio2and${key}`}/>
-                          <input type="radio" name={`images${key}`} id={`radio3and${key}`}/>
-                          <div className="galaxy__img__item" id={`img1and${key}`}>
-                              <img src="img/img1" alt=""/>
-                              <label className="galaxy__img__pre" htmlFor={`radio3and${key}`}>&#8592;</label>
-                              <label className="galaxy__img__next" htmlFor={`radio2and${key}`}>&#8594;</label>
-                          </div>
-                          <div className="galaxy__img__item" id={`img2and${key}`}>
-                              <img src="img/img2" alt=""/>
-                              <label className="galaxy__img__pre" htmlFor={`radio1and${key}`}>&#8592;</label>
-                              <label className="galaxy__img__next" htmlFor={`radio3and${key}`}>&#8594;</label>
-                          </div>
-                          <div className="galaxy__img__item" id={`img3and${key}`}>
-                              <img src="img/img3" alt=""/>
-                              <label className="galaxy__img__pre" htmlFor={`radio2and${key}`}>&#8592;</label>
-                              <label className="galaxy__img__next" htmlFor={`radio1and${key}`}>&#8594;</label>
-                          </div>
+                          {
+                            imagesURL.map((item, index) => {
+                              return <input type="radio" name={`images${order}`} id={`radio${index}and${order}`} key={index} defaultChecked/>
+                            })
+                          }
+                          {
+                            imagesURL.map((item, index) => {
+                                let pre = index <= 0 ? countImage - 1 : index - 1;
+                                let next = index >= countImage - 1 ? 0 : index + 1;
+                              return (
+                                <div className="galaxy__img__item" id={`img${index}and${order}`} key={index}>
+                                    <img src={item} alt=""/>
+                                    <label className="galaxy__img__pre" htmlFor={`radio${pre}and${order}`}>&#8592;</label>
+                                    <label className="galaxy__img__next" htmlFor={`radio${next}and${order}`}>&#8594;</label>
+                                </div>
+                              )
+                            })
+                          }
                           <div className="galaxy__nav">
-                              <label className="galaxy__nav__tick" htmlFor={`radio1and${key}`} id={`tick1and${key}`}></label>
-                              <label className="galaxy__nav__tick" htmlFor={`radio2and${key}`} id={`tick2and${key}`}></label>
-                              <label className="galaxy__nav__tick" htmlFor={`radio3and${key}`} id={`tick3and${key}`}></label>
+                              {
+                                imagesURL.map((item, index) => {
+                                  return <label key={index} className="galaxy__nav__tick" htmlFor={`radio${index}and${order}`} id={`tick${index}and${order}`}></label>
+                                })
+                              }
                           </div>
                       </div>
                       <div className="galaxy__tool"></div>
                   </div>
-                  <div className="product__detail__info"></div>
+                  <div className="product__detail__info">
+                    <p>{data.description}</p>
+                  </div>
               </div>
           </CSSTransition>
           <span className="product__button btn btn--gray" onClick={this.closeAndShow}>{this.state.showDetail ? 'CLOSE' : 'SEE MORE'}</span>
