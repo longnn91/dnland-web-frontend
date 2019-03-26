@@ -100,9 +100,9 @@ class Header extends Component {
           <div className="header__container">
               <div className="header__logo">
                   <div className="header__logo__text cursor-pointer">
-                      <span></span>
-                      <span></span>
-                      <span>XANH</span>
+                      <span>M</span>
+                      <span>B</span>
+                      <span>X</span>
                   </div>
               </div>
               <div className="header__menu menu">
