@@ -2,14 +2,27 @@ import React, {Component} from 'react';
 import {toastr} from 'react-redux-toastr'
 import { createPost } from 'actions/postAction';
 
-const ImageSlider = ({images, handleClose}) => {
+const ImageSlider = ({images, handleClose, moveItem}) => {
   const listImage = [];
+  const startDrag = (event, index) => {
+    event.dataTransfer.setData('id', index);
+  };
+  const allowDrag = (event) => {
+    event.preventDefault();
+  };
   images.map((item, key) => {
     let src = URL.createObjectURL(item);
     listImage.push(
       <div className="image-slider__item" key={key}>
           <span className="image-slider__item__close-btn" onClick={() => handleClose(key)}>&times;</span>
-          <img className="image-slider__item__img" src={src} />
+          <img
+              draggable
+              onDragStart={(e) => startDrag(e, key)}
+              onDragOver={allowDrag}
+              onDrop={(e) => moveItem(e, key)}
+              className="image-slider__item__img"
+              src={src}
+          />
       </div>)
     });
     listImage ? listImage.push(<label htmlFor="upload-image" key={images.length} className="image-slider__plus-btn">&#43;</label>) : null;
@@ -25,6 +38,7 @@ export default class CreatePostPage extends Component {
     this.handleUploadImage = this.handleUploadImage.bind(this);
     this.removeImage = this.removeImage.bind(this);
     this.uploadImage = this.uploadImage.bind(this);
+    this.wrapImage = this.wrapImage.bind(this);
     this.state = {
       phone: '',
       description: '',
@@ -32,6 +46,14 @@ export default class CreatePostPage extends Component {
       images: []
     }
   }
+
+  wrapImage(event, id) {
+    let moveIndex = event.dataTransfer.getData('id');
+    let dragElement = this.state.images[moveIndex];
+    this.state.images[moveIndex] = this.state.images[id];
+    this.state.images[id] = dragElement;
+    this.setState({images: this.state.images});
+  };
 
   handleChange(e) {
     const { name, value } = e.target;
@@ -106,7 +128,7 @@ export default class CreatePostPage extends Component {
                         <input type="file" id="upload-image" className="form__upload-img__btn" name="images" onChange={this.handleUploadImage} accept="image/*" multiple />
                     </div>
                     { this.state.images.length > 0 &&
-                      <ImageSlider images={this.state.images} handleClose={this.removeImage}></ImageSlider>
+                      <ImageSlider images={this.state.images} moveItem={this.wrapImage} handleClose={this.removeImage}></ImageSlider>
                     }
                     <div className="form__group  mgb-50">
                         <input type="button" onClick={this.back} value="BACK" className="form__btn btn btn--gray mgr-30" />

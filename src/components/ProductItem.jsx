@@ -17,17 +17,20 @@ export default class ProductItem extends Component {
 
   render() {
     const { order, data } = this.props;
-    console.log(data);
     const imagesURL = data.images.map(item => `${API_SERVER}/${data.location}/${item}`);
     const countImage = imagesURL.length;
     const firstImageURL = countImage > 0 ? imagesURL[0] : null;
+    const itemThumbnailStyle = {
+      backgroundSize: 'cover',
+      backgroundRepeat: 'no-repeat',
+      backgroundPosition: 'center center',
+      backgroundImage: `url(${firstImageURL})`
+    }
     return (
       <div className="product">
           { !this.state.showDetail &&
             <div className="product__basic">
-                <div className="product__header">
-                    <img className="product__thumb" src={firstImageURL} alt="" align="middle" />
-                </div>
+                <div className="product__header" style={itemThumbnailStyle}></div>
                 <div className="product__content">
                     <div className="mgl-50 fz-20">Place</div>
                     <div className="product__price">

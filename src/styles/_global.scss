@@ -206,6 +206,9 @@ body.ReactModal__Body--open {
   &__header {
     height: 120px;
     padding: 5px;
+    width: 160px;
+    margin: 5px;
+    margin-right: 20px;
   }
 
   &__content {
@@ -276,6 +279,7 @@ body.ReactModal__Body--open {
     overflow-x: hidden;
     display: flex;
     align-items: center;
+    justify-content: center;
     position: relative;
 
     &__pre, &__next {
@@ -455,6 +459,7 @@ body.ReactModal__Body--open {
     &:hover {
       border: 1px solid $green_color;
       opacity: 0.9;
+      cursor: move;
       #{$root}__close-btn {
         visibility: visible;
       }

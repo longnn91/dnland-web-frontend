@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { ProductItem, ProductList } from 'components';
+import { ProductItem } from 'components';
 import Login from 'components/Login';
 import { isAuth } from 'actions/authAction';
 import { connect } from 'react-redux';
