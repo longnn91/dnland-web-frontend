@@ -32,13 +32,37 @@ export default class ProductItem extends Component {
             <div className="product__basic">
                 <div className="product__header" style={itemThumbnailStyle}></div>
                 <div className="product__content">
-                    <div className="mgl-50 fz-20">Place</div>
-                    <div className="product__price">
-                        <span>Acreage</span>
+                    <div className="product__content__item">
+                        <span className="icon-home mgr-5"></span>
                         <span>30 M<sup>2</sup></span>
                       </div>
-                    <div className="product__price">30$</div>
-                    <div className="product__price">New york</div>
+                    <div className="product__content__item">
+                        <span className="icon-coin-dollar mgr-5"></span>
+                        <span>30$</span>
+                    </div>
+                    <div className="product__content__item">
+                      <span className="icon-location mgr-5"></span>
+                      <span>Đà Nẵng - Quận Hải Châu - Phường Hòa Cường Bắc</span>
+                    </div>
+                    <div className="product__content__item">
+                      <span className="icon-bookmarks mgr-5"></span>
+                      <span>Mọi thể loại</span>
+                    </div>
+                </div>
+                <div className="product__control">
+                    <div className="product__control__top">
+                        <span className="icon-heart"></span>
+                        <div className="product__share-face">
+                            <span className="icon-facebook2"></span>
+                        </div>
+                        <div className="product__call-btn">
+                            <span className="icon-phone icon--white icon--middle fz-16"></span>
+                        </div>
+                    </div>
+                    <div className="product__control__bottom">
+                        <div className="product__quick-btn mgr-10">Quick view</div>
+                        <div className="product__detail-btn">Detail view</div>
+                    </div>
                 </div>
             </div>
           }
@@ -83,7 +107,6 @@ export default class ProductItem extends Component {
                   </div>
               </div>
           </CSSTransition>
-          <span className="product__button btn btn--gray" onClick={this.closeAndShow}>{this.state.showDetail ? 'CLOSE' : 'SEE MORE'}</span>
       </div>
     )
   }

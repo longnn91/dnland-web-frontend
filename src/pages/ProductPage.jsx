@@ -34,7 +34,7 @@ class ProductPage extends Component {
 
   render() {
     let arrayTemp = this.props.post ? this.props.post : [];
-    return(
+    return (
       <section className="product-section">
           <div className="product-section__list">
               <div className="product-section__search">
