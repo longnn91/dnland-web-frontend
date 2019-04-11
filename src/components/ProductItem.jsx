@@ -35,10 +35,11 @@ export default class ProductItem extends Component {
                     <div className="product__content__item">
                         <span className="icon-home mgr-5"></span>
                         <span>30 M<sup>2</sup></span>
+                        <span className="cl-gray-light"> | 2 hours ago </span>
                       </div>
                     <div className="product__content__item">
                         <span className="icon-coin-dollar mgr-5"></span>
-                        <span>30$</span>
+                        <span className="cl-red mgr-10">30$</span>
                     </div>
                     <div className="product__content__item">
                       <span className="icon-location mgr-5"></span>
