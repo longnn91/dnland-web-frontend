@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import { Link, Route } from 'react-router-dom';
 import Modal from 'react-modal';
 import { headerMenu } from 'constants/data';
-import LogoutModal from 'modals/Logout.modal';
+import MainModal from 'modals/Main.modal';
 import Login from 'components/Login';
 import Register from 'components/Register';
 import { isAuth } from 'actions/authAction';
@@ -97,6 +97,7 @@ class Header extends Component {
     const language = this.props.language;
     return (
       <header className="header">
+          <MainModal openModal={this.openModal} isOpenModal={this.state.openModal}></MainModal>
           <div className="header__container">
               <div className="header__logo">
                   <div className="header__logo__text cursor-pointer">
@@ -141,7 +142,6 @@ class Header extends Component {
                    { isAuth() &&
                       <button className="header__account__item btn btn--danger btn--sm" onClick={this.openModal}>{trans('logout')}</button>
                    }
-                   <LogoutModal openModal={this.openModal} isOpenModal={this.state.openModal}></LogoutModal>
               </div>
           </div>
       </header>

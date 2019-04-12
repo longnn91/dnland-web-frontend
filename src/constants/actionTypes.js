@@ -7,6 +7,11 @@ export const productType = {
   EDIT_PRODUCT: 'EDIT_PRODUCT'
 }
 
+export const modalType = {
+  OPEN_MODAL: 'OPEN_MODAL',
+  CLOSE_MODAL: 'CLOSE_MODAL'
+}
+
 export const languageType = {
   CHANGE_LANGUAGE: 'CHANGE_LANGUAGE',
   LOAD_TRANSLATIONS: 'LOAD_TRANSLATIONS'
